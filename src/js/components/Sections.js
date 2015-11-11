@@ -12,7 +12,8 @@ cm.define('App.Sections', {
     'params' : {
         'node' : cm.Node('div'),
         'name' : '',
-        'angle' : 7
+        'angle' : 7,
+        'parallax' : true
     }
 },
 function(params){
@@ -40,7 +41,9 @@ function(params){
     var render = function(){
         process();
         cm.addEvent(window, 'resize', resizeEvent);
-        cm.addEvent(window, 'scroll', scrollEvent);
+        if(that.params['parallax']){
+            cm.addEvent(window, 'scroll', scrollEvent);
+        }
     };
 
     var process = function(){
@@ -54,7 +57,9 @@ function(params){
                 'nodes' : section
             };
             resizeSection(item);
-            scrollSection(item);
+            if(that.params['parallax']){
+                scrollSection(item);
+            }
             that.items.push(item);
         });
     };
@@ -122,7 +127,9 @@ function(params){
         that.scrollTop = cm.getScrollTop(window);
         cm.forEach(that.items, function(item){
             resizeSection(item);
-            scrollSection(item);
+            if(that.params['parallax']){
+                scrollSection(item);
+            }
         });
     };
 
