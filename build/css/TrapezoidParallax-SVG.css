@@ -13652,8 +13652,8 @@ html.ie9 .com__timeselect > .inner > .sep {
 /* ************************************************ */
 html,
 body {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }
 body {
   min-width: 320px;

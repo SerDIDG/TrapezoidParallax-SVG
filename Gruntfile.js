@@ -75,7 +75,8 @@ module.exports = function(grunt) {
                     config['magpieui']['path'] + 'js/' + config['magpieui']['name'] + '.js',
                     'src/js/application.js',
                     'src/js/components/**/*.js',
-                    'src/js/components.js'
+                    'src/js/components.js',
+                    'src/js/*.js'
                 ],
                 dest: 'build/js/<%= pkg.name %>.js'
             },
