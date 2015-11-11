@@ -19241,8 +19241,8 @@ function(params){
     };
 
     var scrollSection = function(item){
-        //cm.setCSSTranslate(item['nodes']['svg-image'], 0, [that.scrollTop - item['offsetTop'], 'px'].join(''));
-        item['nodes']['svg-image'].setAttribute('y', (that.scrollTop - item['offsetTop']));
+        cm.setCSSTranslate(item['nodes']['svg-image'], 0, [that.scrollTop - item['offsetTop'], 'px'].join(''));
+        //item['nodes']['svg-image'].setAttribute('y', (that.scrollTop - item['offsetTop']));
     };
 
     var scrollAction = function(){
