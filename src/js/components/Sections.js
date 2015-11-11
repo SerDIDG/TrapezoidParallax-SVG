@@ -33,9 +33,16 @@ function(params){
         that.convertEvents(that.params['events']);
         that.getDataNodes(that.params['node']);
         that.getDataConfig(that.params['node']);
+        validateParams();
         render();
         that.addToStack(that.params['node']);
         that.triggerEvent('onRender');
+    };
+
+    var validateParams = function(){
+        if(cm.is('Safari') || cm.is('IE')){
+            that.params['parallax'] = false;
+        }
     };
 
     var render = function(){
