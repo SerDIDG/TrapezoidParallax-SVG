@@ -19140,7 +19140,7 @@ function(params){
         process();
         cm.addEvent(window, 'resize', resizeEvent);
         if(that.params['parallax']){
-            cm.addEvent(window, 'scroll', scrollEvent);
+            window.addEventListener('scroll', scrollEvent);
         }
     };
 
