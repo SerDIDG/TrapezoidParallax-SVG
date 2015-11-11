@@ -1,0 +1,34 @@
+{
+  "name": "TrapezoidParallax",
+  "repository": "SerDIDG/TrapezoidParallax",
+  "description": "Proof of concept",
+  "main": [
+    "build/js/TrapezoidParallax.js",
+    "build/css/TrapezoidParallax.css"
+  ],
+  "authors": [
+    {
+      "name": "Serhio Magpie",
+      "email": "serdidg@gmail.com",
+      "homepage": "https://github.com/SerDIDG"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ui", "javascript", "js", "css", "less"
+  ],
+  "homepage": "https://github.com/SerDIDG",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "lib",
+    "temp",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "magpieui": "https://github.com/SerDIDG/MagpieUI.git"
+  }
+}

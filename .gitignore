@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+.git
+lib
+debug
+temp
+node_modules
+bower_components
