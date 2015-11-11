@@ -19,6 +19,12 @@ cm.define('App.Sections', {
 function(params){
     var that = this;
 
+    var scrolling = false;
+    var mouseWheelActive = false;
+
+    var count = 0;
+    var mouseDelta = 0;
+
     that.nodes = {
         'sections' : []
     };
@@ -43,7 +49,10 @@ function(params){
         cm.addEvent(window, 'resize', resizeEvent);
         if(that.params['parallax']){
             cm.addEvent(window, 'scroll', scrollEvent);
+            cm.addEvent(window, 'mousewheel', mouseScroll, false);
+            cm.addEvent(window, 'DOMMouseScroll', mouseScroll, false);
         }
+        animationLoop();
     };
 
     var process = function(){
@@ -150,8 +159,48 @@ function(params){
     };
 
     var scrollEvent = function(){
-        scrollAction();
+        scrolling = true;
+        //scrollAction();
     };
+
+    function animationLoop() {
+        // adjust the image's position when scrolling
+        if (scrolling) {
+            scrollAction();
+            scrolling = false;
+        }
+
+        // scroll up or down by 10 pixels when the mousewheel is used
+        if (mouseWheelActive) {
+            window.scrollBy(0, -mouseDelta * 10);
+            count++;
+
+            // stop the scrolling after a few moments
+            if (count > 20) {
+                count = 0;
+                mouseWheelActive = false;
+                mouseDelta = 0;
+            }
+        }
+
+        animFrame(animationLoop);
+    }
+
+    function mouseScroll(e) {
+        mouseWheelActive = true;
+
+        // cancel the default scroll behavior
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+
+        // deal with different browsers calculating the delta differently
+        if (e.wheelDelta) {
+            mouseDelta = e.wheelDelta / 120;
+        } else if (e.detail) {
+            mouseDelta = -e.detail / 3;
+        }
+    }
 
     /* ******* PUBLIC ******* */
 
