@@ -1,10 +1,10 @@
 {
-  "name": "TrapezoidParallax",
-  "repository": "SerDIDG/TrapezoidParallax",
+  "name": "TrapezoidParallax-SVG",
+  "repository": "SerDIDG/TrapezoidParallax-SVG",
   "description": "Proof of concept",
   "main": [
-    "build/js/TrapezoidParallax.js",
-    "build/css/TrapezoidParallax.css"
+    "build/js/TrapezoidParallax-SVG.js",
+    "build/css/TrapezoidParallax-SVG.css"
   ],
   "authors": [
     {

@@ -19122,6 +19122,8 @@ function(params){
 
     that.itemsLenth = 0;
     that.items = [];
+    that.pageSize = {};
+    that.scrollTop = 0;
 
     var init = function(){
         that.setParams(params);
@@ -19136,10 +19138,13 @@ function(params){
     var render = function(){
         process();
         cm.addEvent(window, 'resize', resizeEvent);
+        cm.addEvent(window, 'scroll', scrollEvent);
     };
 
     var process = function(){
         var item;
+        that.pageSize = cm.getPageSize();
+        that.scrollTop = cm.getScrollTop(window);
         that.itemsLenth = that.nodes['sections'].length;
         cm.forEach(that.nodes['sections'], function(section, i){
             item = {
@@ -19147,6 +19152,7 @@ function(params){
                 'nodes' : section
             };
             resizeSection(item);
+            scrollSection(item);
             that.items.push(item);
         });
     };
@@ -19206,16 +19212,35 @@ function(params){
             )
         );
         item['angleHeight'] = item['svgHeight'] - item['cathetus'];
+        item['offsetTop'] = cm.getRealY(item['nodes']['container']);
+    };
+
+    var resizeAction = function(){
+        that.pageSize = cm.getPageSize();
+        that.scrollTop = cm.getScrollTop(window);
+        cm.forEach(that.items, function(item){
+            resizeSection(item);
+            scrollSection(item);
+        });
+    };
+
+    var scrollSection = function(item){
+        cm.setCSSTranslate(item['nodes']['svg-image'], 0, [that.scrollTop - item['offsetTop'], 'px'].join(''));
+    };
+
+    var scrollAction = function(){
+        that.scrollTop = cm.getScrollTop(window);
+        cm.forEach(that.items, function(item){
+            scrollSection(item);
+        });
     };
 
     var resizeEvent = function(){
         animFrame(resizeAction);
     };
 
-    var resizeAction = function(){
-        cm.forEach(that.items, function(item){
-            resizeSection(item);
-        });
+    var scrollEvent = function(){
+        scrollAction();
     };
 
     /* ******* PUBLIC ******* */

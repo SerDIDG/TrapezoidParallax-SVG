@@ -1,5 +1,5 @@
 {
-  "name": "TrapezoidParallax",
+  "name": "TrapezoidParallax-SVG",
   "version": "1.0.0",
   "description": "Proof of concept",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "email": "serdidg@gmail.com",
     "url": "https://github.com/SerDIDG"
   },
-  "repository": "SerDIDG/TrapezoidParallax",
+  "repository": "SerDIDG/TrapezoidParallax-SVG",
   "dependencies": {
     "bower": "~1.3.0"
   },
