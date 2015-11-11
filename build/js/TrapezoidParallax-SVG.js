@@ -19217,7 +19217,7 @@ function(params){
             )
         );
         item['angleHeight'] = item['svgHeight'] - item['cathetus'];
-        item['offsetTop'] = cm.getRealY(item['nodes']['container']);
+        item['offsetTop'] = cm.getY(item['nodes']['container']);
     };
 
     var resizeAction = function(){
