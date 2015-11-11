@@ -19556,7 +19556,7 @@ var ssc_uniqueID = function () {
     }
 }();
 
-if (/blink/.test(navigator.userAgent.toLowerCase())) {
+if (/chrome|blink/.test(navigator.userAgent.toLowerCase())) {
     ssc_addEvent("mousedown", ssc_mousedown);
     ssc_addEvent("mousewheel", ssc_wheel);
     ssc_addEvent("load", ssc_init)
